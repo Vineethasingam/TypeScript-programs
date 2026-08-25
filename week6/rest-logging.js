@@ -2,18 +2,8 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-// ------------------------------------
-// 1. BUILT-IN MIDDLEWARE
-// ------------------------------------
-// Allows Express to read JSON data sent
-// in the body of POST/PUT requests.
 app.use(express.json());
 
-// ------------------------------------
-// 2. CUSTOM LOGGING MIDDLEWARE
-// ------------------------------------
-// This middleware runs for EVERY request
-// that comes to the server.
 app.use((req, res, next) => {
     const timestamp = new Date().toLocaleString();
 
@@ -23,11 +13,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// ------------------------------------
-// 3. CUSTOM SECURITY MIDDLEWARE
-// ------------------------------------
-// Checks whether the request contains
-// a User-Agent header.
+
 app.use((req, res, next) => {
     const userAgent = req.get('User-Agent');
 
